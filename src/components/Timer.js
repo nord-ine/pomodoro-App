@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState } from 'react';
 
 import ReactSvgTimer from 'react-svg-timer';
@@ -5,7 +6,7 @@ import ReactSvgTimer from 'react-svg-timer';
 const Timer = () => {
 
     let [resetRequested, setResetRequested] = useState(false)
-    let [timerIsComplete, setTimerIsComplete] = useState(false)
+    let [timerIsComplete, setTimerIsComplete] = useState(false) 
     let [logMilliseconds, setLogMilliseconds] = useState(true)
     
     const onComplete = (status) => {
@@ -29,7 +30,7 @@ const Timer = () => {
     return (
         <>  
         <ReactSvgTimer
-          timerCount={50}
+          timerCount={200}
           countdownColor="#00ffa8"
           innerColor="#fff"
           outerColor="#000"
