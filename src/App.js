@@ -4,6 +4,14 @@ import RunnigPomodoro from './components/RunnigPomodoro.js';
 
 import SelectionPage from './components/SelectionPage.js';
 
+const WrapperApp = styled.div`
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  `
+
 function App() {
 
   const [mainPage,setMainPage] = useState(true);
@@ -24,18 +32,17 @@ function App() {
     setMainPage(true)
   }
 
-  const WrapperApp = styled.div`
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  `
+  function decrementNbPomodoros(){
+      console.log("complete")
+      setnbPomodoro(nbPomodoro-1)
+    
+  }
+  
   return (
     <WrapperApp className="App">
     {
       mainPage ? <SelectionPage handleStartButtonClick={handleStartButtonClick} nbPomodoro={nbPomodoro} handleChangeNbPomodoros={handleChangeNbPomodoros}/>
-               : <RunnigPomodoro handleResetButtonClick={handleResetButtonClick}/>
+               : <RunnigPomodoro handleResetButtonClick={handleResetButtonClick} nbPomodoro={nbPomodoro} decrementNbPomodoros={decrementNbPomodoros}/>
     }
       
     </WrapperApp>

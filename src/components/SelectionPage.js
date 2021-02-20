@@ -2,27 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 
 import TextField from '@material-ui/core/TextField';
-import InputLabel from '@material-ui/core/InputLabel';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import Slider from '@material-ui/core/Slider';
 
-const useStyles = makeStyles({
-  root: {
-    width: 300,
-  },
-});
 
 const Wrapper = styled.div`
   display: flex;
 `
 
 const  SelectionPage = ({handleStartButtonClick,nbPomodoro,handleChangeNbPomodoros}) => {
-
- 
-  const classes = useStyles();
-
 
 
   return (
@@ -33,6 +20,7 @@ const  SelectionPage = ({handleStartButtonClick,nbPomodoro,handleChangeNbPomodor
     onChange={handleChangeNbPomodoros}
     label="Number"
     type="number"
+    variant='outlined'
     InputProps={{
         inputProps: { 
             max: 15, min: 1 
