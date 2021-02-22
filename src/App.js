@@ -4,6 +4,7 @@ import RunnigPomodoro from './components/RunnigPomodoro.js';
 
 import SelectionPage from './components/SelectionPage.js';
 
+
 const WrapperApp = styled.div`
   margin: 0 auto;
   display: flex;
@@ -30,6 +31,7 @@ function App() {
   function handleResetButtonClick(event){
     console.log("reset button")
     setMainPage(true)
+    setnbPomodoro(4)
   }
 
   function decrementNbPomodoros(){
@@ -40,6 +42,7 @@ function App() {
   
   return (
     <WrapperApp className="App">
+
     {
       mainPage ? <SelectionPage handleStartButtonClick={handleStartButtonClick} nbPomodoro={nbPomodoro} handleChangeNbPomodoros={handleChangeNbPomodoros}/>
                : <RunnigPomodoro handleResetButtonClick={handleResetButtonClick} nbPomodoro={nbPomodoro} decrementNbPomodoros={decrementNbPomodoros}/>

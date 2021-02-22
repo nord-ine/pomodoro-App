@@ -18,7 +18,7 @@ const  SelectionPage = ({handleStartButtonClick,nbPomodoro,handleChangeNbPomodor
   <TextField 
     value ={nbPomodoro}
     onChange={handleChangeNbPomodoros}
-    label="Number"
+    label="Number of pomodoros"
     type="number"
     variant='outlined'
     InputProps={{

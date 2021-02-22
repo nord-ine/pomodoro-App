@@ -1,15 +1,24 @@
 /* eslint-disable */
-import React, { useState , useEffect} from 'react';
+import React, { useState , useEffect,useRef} from 'react';
 
 import ReactSvgTimer from 'react-svg-timer';
 
+import fireworksPNG from '../fireworks.png';
+
+import bellAudio from '../bell.mp3'
+
+const POMODORO_DURATION = 1500
+const POMODORO_PAUSE_DURATION = 300
+
+
 const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
 
+    const audioRef = useRef()
 
     let [resetRequested, setResetRequested] = useState(false)
     let [timerIsComplete, setTimerIsComplete] = useState(false) 
 
-    const [timerState,setTimerState] = useState(10)
+    const [timerState,setTimerState] = useState(POMODORO_DURATION)
     
 
     useEffect(() => {
@@ -18,13 +27,13 @@ const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
         console.log("ggggggggggggggggg" +timerIsComplete)
         
         //console.log(nbPomodoro)
-         if(timerState==10 && nbPomodoro==1) setTimerState(-1)
-         else if(timerState==5) setTimerState(10)
-         else  setTimerState(5)
+         if(timerState==POMODORO_DURATION && nbPomodoro==1) setTimerState(-1)
+         else if(timerState==POMODORO_PAUSE_DURATION) setTimerState(POMODORO_DURATION)
+         else  setTimerState(POMODORO_PAUSE_DURATION)
          
         // (timerState==10 && nbPomodoro>0)
          console.log("timerstate in here :  "+timerState)
-         if(timerState==10)decrementNbPomodoros()
+         if(timerState==POMODORO_DURATION)decrementNbPomodoros()
       }
     },[timerIsComplete])
     
@@ -32,8 +41,9 @@ const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
     const onComplete = (status) => {
           setTimerIsComplete(true)
           setResetRequested(true)
+          audioRef.current.play()
           //console.log(status)
-          console.log("incomplete : " +timerIsComplete)
+          console.log("incomplete : " +timerIsComplete, timerState)
     }
     
     const onReset = () => {
@@ -42,15 +52,15 @@ const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
     }
    
     
-    const onResetRequest = () => {
-      setResetRequested(true);
-    }
-        
     return (
       <>
         {
+          
           timerState==-1 ? 
-          <p>free</p> : 
+          <div>
+            <p>congratulation you finished your pomodoros <img src={fireworksPNG} alt="pomodoroPNG" width="20px" height="20px"/></p> 
+          </div>
+            : 
           <ReactSvgTimer
             timerCount={timerState}
             countdownColor="#00ffa8"
@@ -62,6 +72,7 @@ const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
             displayCountdown={true}
         />
         }
+        <audio ref = {audioRef} src={bellAudio} preload="auto"></audio>
         </>
     )
 }
