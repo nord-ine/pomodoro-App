@@ -7,11 +7,11 @@ import fireworksPNG from '../fireworks.png';
 
 import bellAudio from '../bell.mp3'
 
-const POMODORO_DURATION = 1500
-const POMODORO_PAUSE_DURATION = 300
+const POMODORO_DURATION = 5
+const POMODORO_PAUSE_DURATION = 2
 
 
-const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
+const Timer = ({decrementNbPomodoros,nbPomodoro,getTimerStateCallback}) => {
 
     const audioRef = useRef()
 
@@ -30,11 +30,16 @@ const Timer = ({decrementNbPomodoros,nbPomodoro}) => {
          if(timerState==POMODORO_DURATION && nbPomodoro==1) setTimerState(-1)
          else if(timerState==POMODORO_PAUSE_DURATION) setTimerState(POMODORO_DURATION)
          else  setTimerState(POMODORO_PAUSE_DURATION)
-         
-        // (timerState==10 && nbPomodoro>0)
+
          console.log("timerstate in here :  "+timerState)
          if(timerState==POMODORO_DURATION)decrementNbPomodoros()
+
+         getTimerStateCallback(timerState)
       }
+      // return ()=>{
+      //   getTimerStateCallback(timerState)
+
+      // }
     },[timerIsComplete])
     
     

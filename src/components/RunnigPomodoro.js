@@ -1,11 +1,14 @@
-import React from 'react'
+import React,{useState} from 'react'
 import Button from '@material-ui/core/Button';
 import Timer from './Timer';
+import Quote from './Quote'
 
 import pomodoroPNG from '../pom.png';
 
 
-const RunnigPomodoro = ({handleResetButtonClick,nbPomodoro,decrementNbPomodoros}) =>{
+const RunnigPomodoro = ({handleResetButtonClick,nbPomodoro,decrementNbPomodoros,}) =>{
+
+const [showQuote,setShowQuote] = useState(false)
 
 function showPomodoros(){
     let pomodoros=[]
@@ -16,6 +19,13 @@ function showPomodoros(){
     return pomodoros
 }
 
+function getTimerStateCallback(timerstate){
+    if(timerstate===5) setShowQuote(true)
+    else setShowQuote(false)
+
+    console.log("hhhhhhh  ",timerstate)
+}
+
     return (
         <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
             { nbPomodoro>0 &&
@@ -24,8 +34,9 @@ function showPomodoros(){
                 {showPomodoros()} 
             </div>}
           
-            <Timer decrementNbPomodoros={decrementNbPomodoros} nbPomodoro={nbPomodoro}/>
-            <Button variant="outlined" color="secondary" onClick ={handleResetButtonClick}>Reset</Button>
+            <Timer decrementNbPomodoros={decrementNbPomodoros} nbPomodoro={nbPomodoro} getTimerStateCallback={getTimerStateCallback}/>
+            <Button style={{marginBottom:"20px"}} variant="outlined" color="secondary" onClick ={handleResetButtonClick}>Reset</Button>
+            {showQuote && <Quote showQuote={showQuote} />}
         </div>
     )
 }
