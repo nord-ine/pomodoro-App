@@ -7,9 +7,10 @@ import fireworksPNG from '../fireworks.png';
 
 import bellAudio from '../bell.mp3'
 
-const POMODORO_DURATION = 5
-const POMODORO_PAUSE_DURATION = 2
+// const POMODORO_DURATION = 5
+// const POMODORO_PAUSE_DURATION = 2
 
+import {POMODORO_DURATION,POMODORO_PAUSE_DURATION} from '../constants.js'
 
 const Timer = ({decrementNbPomodoros,nbPomodoro,getTimerStateCallback}) => {
 

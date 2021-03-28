@@ -1,0 +1,2 @@
+export const POMODORO_DURATION = 1500
+export const POMODORO_PAUSE_DURATION = 300

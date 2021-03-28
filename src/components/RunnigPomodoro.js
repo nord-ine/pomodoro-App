@@ -4,7 +4,7 @@ import Timer from './Timer';
 import Quote from './Quote'
 
 import pomodoroPNG from '../pom.png';
-
+import {POMODORO_DURATION,POMODORO_PAUSE_DURATION} from '../constants.js'
 
 const RunnigPomodoro = ({handleResetButtonClick,nbPomodoro,decrementNbPomodoros,}) =>{
 
@@ -20,10 +20,10 @@ function showPomodoros(){
 }
 
 function getTimerStateCallback(timerstate){
-    if(timerstate===5) setShowQuote(true)
+    if(timerstate===POMODORO_DURATION) setShowQuote(true)
     else setShowQuote(false)
 
-    console.log("hhhhhhh  ",timerstate)
+   // console.log("getTimerStateCallback  ",timerstate)
 }
 
     return (

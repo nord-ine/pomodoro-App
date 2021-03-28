@@ -1,13 +1,10 @@
 import React from 'react'
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import { useState,useEffect } from 'react';
 
 function Quote({showQuote}) {
 
     // eslint-disable-next-line
-    const [quote, setquote] = useState("blablablalaidjsfslufhskfjskfdhdjfhdkfijsdkjfhdkjfhsdjkfhsdkjfhdfkjsdhfjsdhflsdkfjsdlkfjsdkfjsbdjfhdfgkjjhgfkjfdhgkisi")
+    const [quote, setquote] = useState({})
 
     useEffect(() => {
       fetch('https://api.quotable.io/random')
@@ -18,9 +15,9 @@ function Quote({showQuote}) {
       })
     },[showQuote])
     return (
-        <div style={{margin:"5px", padding:"5px",borderRadius:"1px",background:"#39CCCC",borderRadius: "30px"}}>  
+        <div style={{margin:"5px", padding:"5px",borderRadius:"10px",background:"#39CCCC"}}>  
               <figure>
-                    <blockquote cite="https://www.huxley.net/bnw/four.html">
+                    <blockquote >
                        <p>{quote.content}</p>
                     </blockquote>
                     <figcaption>—{quote.author}</figcaption>
