@@ -1,7 +1,7 @@
 # pomodoro-App
 pomodoro single page web app with ReactJs 
 
-
+url of the APP : https://master.d3isyj4ltne4ef.amplifyapp.com/
 
 
 ## Available Scripts
